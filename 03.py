@@ -7,8 +7,6 @@ import datetime
 import paho.mqtt.client as mqtt
 
 lcd = lcddriver.lcd()
-lcd.lcd_display_string("                ", 1)
-lcd.lcd_display_string("                ", 2)
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -20,9 +18,10 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic)
-    lcd.lcd_display_string("Topic: "+msg.topic, 1)
     print(str(msg.payload))
-    lcd.lcd_display_string("Message: "+str(msg.payload), 2)
+    lcd = lcddriver.lcd()
+    lcd.lcd_display_string("T:"+msg.topic, 1)
+    lcd.lcd_display_string("M:"+str(msg.payload), 2)
 
 def main():
   lcd.lcd_clear();
