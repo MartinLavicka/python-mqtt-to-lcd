@@ -7,8 +7,8 @@ import datetime
 import paho.mqtt.client as mqtt
 
 lcd = lcddriver.lcd()
-      lcd.lcd_display_string("                ", 1)
-      lcd.lcd_display_string("                ", 2)
+lcd.lcd_display_string("                ", 1)
+lcd.lcd_display_string("                ", 2)
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
